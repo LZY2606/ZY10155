@@ -1,0 +1,58 @@
+{
+  "id": "demo",
+  "name": "三层 SDC 审查演示",
+  "ruleVersion": "1.0.0",
+  "ports": ["CLK", "CLK_ALT", "DIN[*]", "DOUT[*]", "rst_n"],
+  "cells": ["U_CORE", "U_CORE/U_CTRL", "U_CORE/U_FIFO", "U_CORE/U_FSM", "U_IP/U_PLL", "U_IP/U\\ SPACE"],
+  "pins": [
+    "U_IP/U_PLL/clkout",
+    "U_IP/U_PLL/altout",
+    "U_CORE/U_CTRL/clk",
+    "U_CORE/U_CTRL/q",
+    "U_CORE/U_FIFO/data_in",
+    "U_CORE/U_FIFO/wr_en",
+    "U_CORE/U_FIFO/rst_n",
+    "U_CORE/U_FSM/state[0]",
+    "U_CORE/U_FSM/state[1]",
+    "U_CORE/U_FIFO/D0",
+    "U_CORE/U_FIFO/D1",
+    "U_IP/U\\ SPACE/pin/a"
+  ],
+  "paths": [
+    {
+      "id": "path:ctrl-to-fifo",
+      "from": "U_CORE/U_CTRL/q",
+      "to": "U_CORE/U_FIFO/data_in",
+      "through": ["U_CORE/U_FIFO/data_in"],
+      "launchClock": "clk",
+      "captureClock": "clk"
+    },
+    {
+      "id": "path:fsm-to-fifo",
+      "from": "U_CORE/U_FSM/state[0]",
+      "to": "U_CORE/U_FIFO/wr_en",
+      "launchClock": "clk",
+      "captureClock": "clk"
+    },
+    {
+      "id": "path:ctrl-to-reset",
+      "from": "U_CORE/U_CTRL/q",
+      "to": "U_CORE/U_FIFO/rst_n",
+      "launchClock": "clk",
+      "captureClock": "clk"
+    },
+    {
+      "id": "path:din-to-fifo",
+      "from": "DIN[*]",
+      "to": "U_CORE/U_FIFO/data_in",
+      "captureClock": "clk_alt"
+    },
+    {
+      "id": "path:escaped-space",
+      "from": "U_IP/U\\ SPACE/pin/a",
+      "to": "DOUT[*]",
+      "launchClock": "pll_clk",
+      "captureClock": "clk"
+    }
+  ]
+}

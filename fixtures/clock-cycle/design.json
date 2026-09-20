@@ -1,0 +1,11 @@
+{
+  "id": "clock-cycle",
+  "name": "时钟环与不可区分源",
+  "ruleVersion": "1.0.0",
+  "ports": ["CLK", "DIN"],
+  "cells": ["U0"],
+  "pins": ["U0/Q", "U0/D"],
+  "paths": [
+    {"id": "p1", "from": "DIN", "to": "U0/D", "captureClock": "clk"}
+  ]
+}

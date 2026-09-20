@@ -1,0 +1,11 @@
+{
+  "id": "multicycle-pair",
+  "name": "multicycle 成对覆盖",
+  "ruleVersion": "1.0.0",
+  "ports": ["CLK"],
+  "cells": ["A", "B"],
+  "pins": ["A/q", "B/d"],
+  "paths": [
+    {"id": "p1", "from": "A/q", "to": "B/d", "launchClock": "clk", "captureClock": "clk"}
+  ]
+}
