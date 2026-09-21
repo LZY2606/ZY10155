@@ -1,0 +1,16 @@
+{
+  "name": "sdc-merge-review",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.5.1",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
+  }
+}
